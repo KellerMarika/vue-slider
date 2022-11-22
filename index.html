@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- indispensabile per far funzionare le media-queries -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slider</title>
+
+
+    <!-- font-family: 'Roboto', sans-serif; -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- font-family: fontawesome -->
+    <script src="https://kit.fontawesome.com/a19b158346.js" crossorigin="anonymous"></script>
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+
+
+    <link rel="stylesheet" href="./css/style.css" />
+    <!-- vue -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+
+        <div class="container">
+            <!-- slider -->
+            <div class="slider-wrapper" tabindex="0">
+
+                <!-- button autoplay -->
+                <div class="autoplayBtnContainer">
+                    <div type="button" name="play_btn" class=" play-btn"></div>
+                    <div type="button" name="revert_btn" class="revert-btn"></div>
+                </div>
+
+                <!-- elemento -->
+                <div class="item">
+                    <!-- img :src=sledes[current_index].image :alt= slides[current_index].title-->
+                    <img :src="slides[current_Index].image" :alt="slides[current_Index].title" />
+
+                    <div class="text">
+                        <!--  slides[current_index].title-->
+                        <h3>{{slides[current_Index].title}}</h3>
+                        <!--  slides[current_index].text-->
+                        <p>{{slides[current_Index].text}}</p>
+                    </div>
+                </div>
+
+                <div class=" thumbs thumbnails-container">
+
+                    <!-- button prev/next -->
+                    <div type="button" name="next_btn" class="prev_btn"></div>
+                    <div type="button" name="prev_btn" class="next_btn"></div>
+
+                    <!-- 
+                    ciclo for sull'elemento da copiare (div.thumnail)
+                    1) nel ciclo for passo gli argomenti thumbnail (element) e i (indice) e prende come riferimento la slider (sia per lenght sia per argomenti) 
+                    2)classe dinamica. condizione ternaria: se si verifica la condizione nelle parentesi (i===current_Index)? se è true aggiunge la classe active altrimenti ""
+                    3)aggiungo event listner. al click eseguo la funzione selectThumbnail_onClick a cui passo l'argomento (i) cioè il clickedThumbnail_index
+                    -->
+                    <div class="thumb" v-for="(thumbnail, i) in slides"
+                    :class="(i === current_Index) ? 'active' : '' "
+                    @click="selectThumbnail_onClick(i)">
+                        
+
+                        <img :src="thumbnail.image" :alt="thumbnail.title" />
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
+
+
+
+<!-- 
+/* MODIFICARE IN HTML */
+
+al thumbnail click
+ //aggiungo classe alla thumb cliccata
+        this.classList.add("active");
+
+function disactiveOldThumbnails() {
+    //recupero tutte le thumbs a parte quella cliccata e li colloco in un array
+
+    //#che belli i selettori avanzati <3
+    unactiveThumbnails = document.querySelectorAll(`[data-thumbnail]:not([data-thumbnail= "${dataCounter}" ])`);
+
+    //ciclo sull'arrat delle thumbs da disattivare
+    unactiveThumbnails.forEach((element, i) => {
+        unactiveThumbnails[i].classList.toggle("active", false);
+        //console.log(unactiveThumbnails[i]);
+    });
+}
+
+
+
+
+
+function replaceSlide() {
+
+    //cambio il testo e l'immagine dello slider con i valori delle proprietà dell'oggetto che nell'arry images ha indice === datacounter
+    //recupero i valori delle proprietà da innerare
+    urlImg = images[dataCounter].image;
+    titleImg = images[dataCounter].title;
+    textImg = images[dataCounter].text;
+    //console.log(images[dataCounter]);
+
+    //stampo
+
+    //cambio i valori dell'immagine
+    sliderImg_El.src = urlImg;
+    sliderImg_El.alt = titleImg;
+    //console.log(sliderImg_El);
+
+    //stampo nel label
+    sliderTitle_El.innerHTML = titleImg
+    sliderText_El.innerHTML = textImg
+}-->
