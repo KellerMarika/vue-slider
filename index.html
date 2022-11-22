@@ -43,13 +43,13 @@
 
                 <!-- elemento -->
                 <div class="item">
-                    <!-- img :src=sledes[current_index].image :alt= slides[current_index].title-->
+                    <!-- img :src=sledes[current_Index].image :alt= slides[current_Index].title-->
                     <img :src="slides[current_Index].image" :alt="slides[current_Index].title" />
 
                     <div class="text">
-                        <!--  slides[current_index].title-->
+                        <!--  slides[current_Index].title-->
                         <h3>{{slides[current_Index].title}}</h3>
-                        <!--  slides[current_index].text-->
+                        <!--  slides[current_Index].text-->
                         <p>{{slides[current_Index].text}}</p>
                     </div>
                 </div>
@@ -57,8 +57,8 @@
                 <div class=" thumbs thumbnails-container">
 
                     <!-- button prev/next -->
-                    <div type="button" name="next_btn" class="prev_btn"></div>
-                    <div type="button" name="prev_btn" class="next_btn"></div>
+                    <div type="button" name="next_btn" class="next_btn"  @click="nextSlide"></div>
+                    <div type="button" name="prev_btn" class="prev_btn" @click="prevSlide"></div>
 
                     <!-- 
                     ciclo for sull'elemento da copiare (div.thumnail)
@@ -69,8 +69,7 @@
                     <div class="thumb" v-for="(thumbnail, i) in slides"
                     :class="(i === current_Index) ? 'active' : '' "
                     @click="selectThumbnail_onClick(i)">
-                        
-
+            
                         <img :src="thumbnail.image" :alt="thumbnail.title" />
                     </div>
 

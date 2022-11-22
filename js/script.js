@@ -8,6 +8,7 @@ const app = createApp({
         return {
             /* current index dovrà sempre riferirsi alla posizione dell'oggetto[] nell'array slides.*/
             current_Index: 0,
+            a: 0,
             slides: [
                 {
                     image: 'img/01.webp',
@@ -44,6 +45,7 @@ const app = createApp({
         /* INIZIO FUNZIONE NEXT  ****/
         nextSlide() {
             // è uguale a scrivere if(this.current_Index>slides.lenght) 
+            //se sono all'ultima (4) quando clicco ricomincio dalla prima
             if (this.current_Index === this.slides.length - 1) {
                 // ricomincia d'accapo
                 this.current_Index = 0;
@@ -53,22 +55,21 @@ const app = createApp({
         },
 
         /* INIZIO FUNZIONE PREVIEW  ****/
-        /*        prevSlide() {
-       
-                   //è uguale a scrivere if(this.current_Index<0) 
-                   if (this.current_Index === 0) {
-                       this.current_Index = this.slides.length - 1;
-                   } else {
-                       this.current_Index--;
-                   }
-               }, */
+        prevSlide() {
+
+            //è uguale a scrivere if(this.current_Index<0) 
+            if (this.current_Index === 0) {
+                this.current_Index = this.slides.length - 1;
+            } else {
+                this.current_Index--;
+            }
+        },
 
         /* FUNZIONE THUMBNAIL CLICK (selectSlide) */
         //l'argomento di questa funzione deve essere lìindice della thumbnail cliccata
         selectThumbnail_onClick(clickedThumbnil_Index) {
             this.current_Index = clickedThumbnil_Index;
-            console.log(current_Idex, clickedThumbnil_Index);
-        /*     this.classList.add("active"); */
+            /*console.log(current_Index, clickedThumbnil_Index);______perchè mi dai errore?? ti odio Vue */
 
             /*    
             //aggiungo classe alla thumb cliccata
