@@ -55,7 +55,7 @@
     opacity: 1;
 }
 
-.prev, .next {
+.prev_btn, .next_btn {
     width: 20px;
     height: 20px;
     margin: 10px 0;
@@ -68,7 +68,7 @@
     z-index: 999;
 }
 
-.next {
+.next_btn {
     bottom: 0;
 }
 
@@ -78,7 +78,7 @@ usando 2 bordi di un quadratino ruotato di 45 gradi
 In una versione base si possono usare delle icone
 oppure i caratteri ∧ (&and;) e ∨ (&or;)
  */
-.prev::after {
+.prev_btn::after {
     content: '';
     width: 10px;
     height: 10px;
@@ -91,7 +91,7 @@ oppure i caratteri ∧ (&and;) e ∨ (&or;)
     transform: translate(-50%) rotate(-45deg);
 }
 
-.next::before {
+.next_btn::before {
     content: '';
     width: 10px;
     height: 10px;
