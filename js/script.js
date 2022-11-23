@@ -66,10 +66,10 @@ const app = createApp({
         /* FUNZIONE STOP AUTOPLAY*/
         stopAutoplay() {
             console.log(this.isPaused);
-        /*     this.isPaused = true;
-            this.autoplay() */
-            return this.isPaused
-                },
+            return this.isPaused = true;
+            /*    this.autoplay() */
+            /*    return this.isPaused */
+        },
 
         /* FUNZIONE AUTOPLAY*/
         autoplay(callbackfunction, isPaused) {
@@ -83,11 +83,11 @@ const app = createApp({
                 console.log(isPaused)
             }
         },
-/* 
-        onInterval(autoplay){
-            setInterval(autoplay,500);
-            console.log("more intervals");
-        } */
+        /* 
+                onInterval(autoplay){
+                    setInterval(autoplay,500);
+                    console.log("more intervals");
+                } */
 
 
         /*      autoplay(callbackfunction) {
@@ -116,13 +116,13 @@ const app = createApp({
     },
     /***** MOUNTED ****************************************/
     mounted() {
- /*        this.autoplay(this.nextSlide, this.isPaused);
-        this.onInterval(this.autoplay);
- */
+        /*        this.autoplay(this.nextSlide, this.isPaused);
+               this.onInterval(this.autoplay);
+        */
         /*  setInterval(this.autoplay(this.nextSlide),500), */
-         setInterval(this.autoplay, 3000), 
+        setInterval(this.autoplay(this.nextSlide, this.isPaused), 500),
 
-        console.log("mounted called");
+            console.log("mounted called");
     }
 }).mount('#app');
 
