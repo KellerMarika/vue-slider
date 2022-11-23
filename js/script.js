@@ -66,29 +66,62 @@ const app = createApp({
         /* FUNZIONE STOP AUTOPLAY*/
         stopAutoplay() {
             console.log(this.isPaused);
-            return this.isPaused = true;
-        },
+        /*     this.isPaused = true;
+            this.autoplay() */
+            return this.isPaused
+                },
 
         /* FUNZIONE AUTOPLAY*/
-        autoplay(callbackfunction) {
+        autoplay(callbackfunction, isPaused) {
             let autoplay_interval
 
-            if (!this.isPaused) {
+            if (!isPaused) {
                 autoplay_interval = setInterval(callbackfunction, 3000);
-                console.log(this.isPaused)
+                console.log(isPaused)
             } else {
                 clearInterval(autoplay_interval);
-                console.log(this.isPaused)
+                console.log(isPaused)
             }
         },
+
+        onInterval(autoplay){
+            setInterval(autoplay,500);
+            console.log("more intervals");
+        }
+
+
+        /*      autoplay(callbackfunction) {
+                 let autoplay_interval
+     
+                 if (!this.isPaused) {
+                     autoplay_interval = setInterval(callbackfunction, 3000);
+                     console.log(this.isPaused)
+                 } else {
+                     clearInterval(autoplay_interval);
+                     console.log(this.isPaused)
+                 }
+             }, */
+
+        /* 
+                checkisPaused(autoplay, isPaused, callbackfunction,autoplay_interval) {
+        
+                    if (isPaused === false) {
+                        autoplay(callbackfunction)
+                    } else {
+                        clearInterval(autoplay_interval)
+                    }
+                }, */
 
 
     },
     /***** MOUNTED ****************************************/
     mounted() {
-        this.autoplay(this.nextSlide),
-           /*  setInterval(this.autoplay, 3000), */
-     
+ /*        this.autoplay(this.nextSlide, this.isPaused);
+        this.onInterval(this.autoplay);
+ */
+        /*  setInterval(this.autoplay(this.nextSlide),500), */
+         setInterval(this.autoplay, 3000), 
+
         console.log("mounted called");
     }
 }).mount('#app');
