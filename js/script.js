@@ -83,11 +83,11 @@ const app = createApp({
                 console.log(isPaused)
             }
         },
-
+/* 
         onInterval(autoplay){
             setInterval(autoplay,500);
             console.log("more intervals");
-        }
+        } */
 
 
         /*      autoplay(callbackfunction) {
